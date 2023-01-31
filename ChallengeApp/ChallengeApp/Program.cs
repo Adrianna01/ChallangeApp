@@ -4,7 +4,7 @@ var name = "Ewa";
 int age = 33;
 bool isFemale = true;
 
-if (isFemale && age < 30) ;
+if (isFemale && age < 30)
 {
     Console.WriteLine(" KOBIETA PONIZEJ 30 LAT");
 }
