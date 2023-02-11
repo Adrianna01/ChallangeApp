@@ -52,7 +52,7 @@ internal class Program
             }
         }
 
-        Console.WriteLine(" The best result:\n" + employeeWithMaxResult.Name + " " + employeeWithMaxResult.Surname + " " + "lat " + employeeWithMaxResult.Age+ "\n"+ "wynik:  " + employeeWithMaxResult.Result);
+        Console.WriteLine(" The best result:\n" + employeeWithMaxResult.Name + " " + employeeWithMaxResult.Surname + " " + ",lat " + employeeWithMaxResult.Age+ "\n"+ "Result:  " + employeeWithMaxResult.Result);
         
     }
 }
