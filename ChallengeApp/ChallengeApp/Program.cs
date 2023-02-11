@@ -1,72 +1,89 @@
-﻿int number = 28666;
-string numberIsString = number.ToString();
-char[] letters = numberIsString.ToArray();
-List<int> counter = new List<int>();
-int counter0 = 0;
-int counter1 = 0;
-int counter2 = 0;
-int counter3 = 0;
-int counter4 = 0;
-int counter5 = 0;
-int counter6 = 0;
-int counter7 = 0;
-int counter8 = 0;
-int counter9 = 0;
+﻿using ChallengeApp;
+using System.Runtime.ConstrainedExecution;
 
-foreach (char letter in letters)
+internal class Program
 {
-
-    if (letter == '0')
+    private static void Main(string[] args)
     {
-        counter0++;
-    }
-    else if (letter == '1')
-    {
-        counter1++;
-    }
-    else if (letter == '2')
-    {
-        counter2++;
-    }
-    else if (letter == '3')
-    {
-        counter3++;
-    }
-    else if (letter == '4')
-    {
-        counter4++;
-    }
-    else if (letter == '5')
-    {
-        counter5++;
-    }
-    else if (letter == '6')
-    {
-        counter6++;
-    }
-    else if (letter == '7')
-    {
-        counter7++;
-    }
-    else if (letter == '8')
-    {
-        counter8++;
-    }
-    else if (letter == '9')
-    {
-        counter9++;
-    }
+        Employee employee1 = new Employee("Artur", "Kowalski", "32");
+        Employee employee2 = new Employee("Anna", "Nowak", "28");
+        Employee employee3 = new Employee("Sylwia", "Mak", "40");
 
 
+
+        employee1.AddScore(6);
+        employee1.AddScore(3);
+        employee1.AddScore(5);
+        employee1.AddScore(5);
+        employee1.AddScore(9);
+
+        employee2.AddScore(6);
+        employee2.AddScore(8);
+        employee2.AddScore(5);
+        employee2.AddScore(8);
+        employee2.AddScore(9);
+
+        employee3.AddScore(7);
+        employee3.AddScore(8);
+        employee3.AddScore(6);
+        employee3.AddScore(9);
+        employee3.AddScore(9);
+
+        int result1 = employee1.Result;
+        int result2 = employee2.Result;
+        int result3 = employee3.Result;
+
+
+
+        List<Employee> employees = new List<Employee>()
+{
+    employee1, employee2, employee3
+
+};
+
+        var maxResult = 0;
+        Employee employeeWithMaxResult = null;
+
+        foreach (var employee in employees)
+        {
+            if (employee.Result > maxResult)
+            {
+                employeeWithMaxResult = employee;
+            }
+        }
+
+        Console.WriteLine(" The best result:\n" + employeeWithMaxResult.Name + " " + employeeWithMaxResult.Surname + " " + "lat " + employeeWithMaxResult.Age+ "\n"+ "wynik:  " + employeeWithMaxResult.Result);
+        
+    }
 }
-Console.WriteLine("Wynik" + number);
-Console.WriteLine("0=>" + counter0);
-Console.WriteLine("1=>" + counter1);
-Console.WriteLine("2=>" + counter2);
-Console.WriteLine("3=>" + counter3);
-Console.WriteLine("4=>" + counter4);
-Console.WriteLine("5=>" + counter5);
-Console.WriteLine("6=>" + counter6);
-Console.WriteLine("7=>" + counter7);
-Console.WriteLine("8=>" + counter8);
-Console.WriteLine("9=>" + counter9);
+
+class Employee
+{
+   
+    private List<int> score = new List<int>();
+
+    public Employee(string name, string surname, string age)
+    {
+        this.Name = name;
+        this.Surname = surname;
+        this.Age = age;
+    }
+
+    public string Name { get; private set; }
+
+    public string Surname{ get; private set; }
+
+    public string Age { get; private set; }
+    public int Result
+
+    {
+        get
+        {
+            return this.score.Sum();
+        }
+    }
+    public void AddScore(int result)
+    {
+        this.score.Add(result);
+    }
+}
