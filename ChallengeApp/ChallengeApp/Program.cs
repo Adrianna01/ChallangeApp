@@ -86,4 +86,4 @@ class Employee
     {
         this.score.Add(result);
     }
-}
+} 
